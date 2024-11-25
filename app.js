@@ -1,4 +1,4 @@
-/** 
+  /** 
  * Module dependencies.
  */
 const path = require('path');
@@ -76,7 +76,7 @@ mongoose.connection.on('error', (err) => {
  * Express configuration.
  */
 app.set('host', process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0');
-const PORT = process.env.PORT || 8080;
+app.set('port', process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 app.set('trust proxy', numberOfProxies);
@@ -278,9 +278,7 @@ app.listen(app.get('port'), () => {
   } else if (app.get('port') !== port) {
     console.warn(WARNING: The BASE_URL environment variable and the App have a port mismatch. If you plan to view the app in your browser using the localhost address, you may need to adjust one of the ports to make them match. BASE_URL: ${BASE_URL}\n);
   }
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+
   console.log(App is running on http://localhost:${app.get('port')} in ${app.get('env')} mode.);
   console.log('Press CTRL-C to stop.');
 });
