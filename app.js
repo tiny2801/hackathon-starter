@@ -268,10 +268,11 @@ if (process.env.NODE_ENV === 'development') {
 /**
  * Start Express server.
  */
-app.listen(app.get('port'), () => {
-  const { BASE_URL } = process.env;
-  const colonIndex = BASE_URL.lastIndexOf(':');
-  const port = parseInt(BASE_URL.slice(colonIndex + 1), 10);
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
 
   if (!BASE_URL.startsWith('http://localhost')) {
     console.log(The BASE_URL env variable is set to ${BASE_URL}. If you directly test the application through http://localhost:${app.get('port')} instead of the BASE_URL, it may cause a CSRF mismatch or an Oauth authentication failur. To avoid the issues, change the BASE_URL or configure your proxy to match it.\n);
