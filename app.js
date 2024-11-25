@@ -280,6 +280,6 @@ app.listen(PORT, () => {
 
   console.log(`App is running on http://localhost:${app.get('port')} in ${app.get('env')} mode.`);
   console.log('Press CTRL-C to stop.');
-});
+};
 
 module.exports = app;
